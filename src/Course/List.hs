@@ -76,8 +76,8 @@ headOr ::
   a
   -> List a
   -> a
-headOr =
-  error "todo: Course.List#headOr"
+headOr x Nil = x
+headOr a (x :. xs) = x
 
 -- | The product of the elements of a list.
 --
@@ -107,8 +107,7 @@ product =
 sum ::
   List Int
   -> Int
-sum =
-  error "todo: Course.List#sum"
+sum = foldRight (+) 0 
 
 -- | Return the length of the list.
 --
@@ -119,8 +118,7 @@ sum =
 length ::
   List a
   -> Int
-length =
-  error "todo: Course.List#length"
+length = foldRight (\x y -> y + 1) 0 
 
 -- | Map the given function on each element of the list.
 --
@@ -134,8 +132,8 @@ map ::
   (a -> b)
   -> List a
   -> List b
-map =
-  error "todo: Course.List#map"
+map f Nil       = Nil
+map f (x :. xs) = f x :. map f xs
 
 -- | Return elements satisfying the given predicate.
 --
@@ -151,8 +149,10 @@ filter ::
   (a -> Bool)
   -> List a
   -> List a
-filter =
-  error "todo: Course.List#filter"
+filter f Nil        = Nil 
+filter f (x :. xs)  = if f x == True then x :. filter f xs 
+                      else filter f xs
+
 
 -- | Append two lists to a new list.
 --
