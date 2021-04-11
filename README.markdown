@@ -3,7 +3,8 @@
 
 ## So far, i've completed: 
 
-* `Course.List`
+* `Course.Optional` ✓
+* `Course.List` ✓
 * `Course.Functor`
 * `Course.Applicative`
 * `Course.Monad`
