@@ -10,6 +10,7 @@ import Course.Optional
 import Course.List
 import qualified Prelude as P(fmap)
 
+--h
 -- | All instances of the `Functor` type-class must satisfy two laws. These laws
 -- are not checked by the compiler. These laws are given as:
 --
