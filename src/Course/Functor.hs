@@ -56,7 +56,7 @@ instance Functor List where
     (a -> b)
     -> List a
     -> List b
-  (<$>) fa l = 
+  (<$>) fa l = map fa l
 
 -- | Maps a function on the Optional functor.
 --
@@ -70,8 +70,7 @@ instance Functor Optional where
     (a -> b)
     -> Optional a
     -> Optional b
-  (<$>) =
-    error "todo: Course.Functor (<$>)#instance Optional"
+  (<$>) f a  = mapOptional f a
 
 -- | Maps a function on the reader ((->) t) functor.
 --
@@ -80,8 +79,8 @@ instance Functor Optional where
 instance Functor ((->) t) where
   (<$>) ::
     (a -> b)
-    -> ((->) t a)
-    -> ((->) t b)
+    -> (->) t a
+    -> (->) t b
   (<$>) =
     error "todo: Course.Functor (<$>)#((->) t)"
 
