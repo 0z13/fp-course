@@ -7,7 +7,7 @@
 * `Course.List` ✓
 * `Course.Functor` ✓
 * `Course.Applicative` ✓
-* `Course.Monad`
+* `Course.Monad` ✓
 * `Course.FileIO`
 * `Course.State`
 * `Course.StateT`

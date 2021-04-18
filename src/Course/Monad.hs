@@ -25,6 +25,17 @@ class Applicative k => Monad k where
     -> k a
     -> k b
 
+-- class Functor k => Applicative k where
+--  pure ::
+--  a = k a
+--  <*> = 
+--  k (a -> b)
+--  k a
+--  k b
+--
+--  class Functor k
+--  fmap :: (a -> b) -> k a -> k b
+
 infixr 1 =<<
 
 -- | Binds a function on the ExactlyOne monad.
@@ -36,8 +47,7 @@ instance Monad ExactlyOne where
     (a -> ExactlyOne b)
     -> ExactlyOne a
     -> ExactlyOne b
-  (=<<) =
-    error "todo: Course.Monad (=<<)#instance ExactlyOne"
+  (=<<) f ka = f $ runExactlyOne ka
 
 -- | Binds a function on a List.
 --
@@ -48,8 +58,7 @@ instance Monad List where
     (a -> List b)
     -> List a
     -> List b
-  (=<<) =
-    error "todo: Course.Monad (=<<)#instance List"
+  (=<<) f l = foldRight (\x y -> f x ++ y) Nil l  -- bind == flatmap?
 
 -- | Binds a function on an Optional.
 --
@@ -60,8 +69,7 @@ instance Monad Optional where
     (a -> Optional b)
     -> Optional a
     -> Optional b
-  (=<<) =
-    error "todo: Course.Monad (=<<)#instance Optional"
+  (=<<) = bindOptional
 
 -- | Binds a function on the reader ((->) t).
 --
@@ -72,10 +80,10 @@ instance Monad ((->) t) where
     (a -> ((->) t b))
     -> ((->) t a)
     -> ((->) t b)
-  (=<<) =
-    error "todo: Course.Monad (=<<)#instance ((->) t)"
-
+  (=<<) f g = \x -> f (g x) x 
+  -- I dont get it mang 
 -- | Witness that all things with (=<<) and (<$>) also have (<*>).
+--
 --
 -- >>> ExactlyOne (+10) <**> ExactlyOne 8
 -- ExactlyOne 18
@@ -111,8 +119,7 @@ instance Monad ((->) t) where
   k (a -> b)
   -> k a
   -> k b
-(<**>) =
-  error "todo: Course.Monad#(<**>)"
+(<**>) f a= f >>= \f' -> a >>= \a' -> pure (f' a')
 
 infixl 4 <**>
 
@@ -133,10 +140,9 @@ join ::
   Monad k =>
   k (k a)
   -> k a
-join =
-  error "todo: Course.Monad#join"
-
--- | Implement a flipped version of @(=<<)@, however, use only
+join x =
+    id =<< x
+-- | Impuement a flipped version of @(=<<)@, however, use only
 -- @join@ and @(<$>)@.
 -- Pronounced, bind flipped.
 --

@@ -369,7 +369,7 @@ filtering ::
   (a -> k Bool)
   -> List a
   -> k (List a)
-filtering a = 
+filtering p = 
   foldRight (\a -> lift2 (\b -> if b then (a:.) else id) (p a)) (pure Nil)
   -- ehhhhhhhhhhhhhhhhhhhhhhhhh from tony morris solutions
 -----------------------
