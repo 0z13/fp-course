@@ -5,8 +5,8 @@
 
 * `Course.Optional` ✓
 * `Course.List` ✓
-* `Course.Functor`
-* `Course.Applicative`
+* `Course.Functor` ✓
+* `Course.Applicative` ✓
 * `Course.Monad`
 * `Course.FileIO`
 * `Course.State`
