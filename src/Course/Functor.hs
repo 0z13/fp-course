@@ -117,8 +117,7 @@ void ::
   Functor k =>
   k a
   -> k ()
-void =
-  error "todo: Course.Functor#void"
+void ka = (<$>) (\x -> ()) ka
 
 -----------------------
 -- SUPPORT LIBRARIES --
