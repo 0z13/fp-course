@@ -153,8 +153,7 @@ join x =
   k a
   -> (a -> k b)
   -> k b
-(>>=) =
-  error "todo: Course.Monad#(>>=)"
+(>>=) ka akb =  join $ akb <$> ka 
 
 infixl 1 >>=
 
@@ -169,8 +168,7 @@ infixl 1 >>=
   -> (a -> k b)
   -> a
   -> k c
-(<=<) =
-  error "todo: Course.Monad#(<=<)"
+(<=<) bkc akb a = let x = akb a in x >>= bkc 
 
 infixr 1 <=<
 
