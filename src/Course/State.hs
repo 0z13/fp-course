@@ -75,9 +75,7 @@ instance Functor (State s) where
     (a -> b)
     -> State s a
     -> State s b
-  (<$>) =
-    error "todo: Course.State#(<$>)"
-
+  (<$>) f (State k) = State  (\s -> let (a, s) = k s in  (f a, s))
 -- | Implement the `Applicative` instance for `State s`.
 --
 -- >>> runState (pure 2) 0
@@ -88,6 +86,7 @@ instance Functor (State s) where
 --
 -- >>> runState (State (\s -> ((+3), s ++ ("apple":.Nil))) <*> State (\s -> (7, s ++ ("banana":.Nil)))) Nil
 -- (10,["apple","banana"])
+
 instance Applicative (State s) where
   pure ::
     a
