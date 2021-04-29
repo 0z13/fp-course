@@ -9,7 +9,7 @@
 * `Course.Applicative` ✓
 * `Course.Monad` ✓
 * `Course.FileIO` ✓
-* `Course.State`
+* `Course.State` ✓
 * `Course.StateT`
 * `Course.Extend`
 * `Course.Comonad`
