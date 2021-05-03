@@ -20,7 +20,6 @@ class Extend k => Comonad k where
   copure ::
     k a
     -> a
-
 -- | Implement the @Comonad@ instance for @ExactlyOne@.
 --
 -- >>> copure (ExactlyOne 7)
@@ -29,8 +28,7 @@ instance Comonad ExactlyOne where
   copure ::
     ExactlyOne a
     -> a
-  copure =
-    error "todo: Course.Comonad copure#instance ExactlyOne"
+  copure (ExactlyOne x) = x
 
 -- | Witness that all things with (<<=) and copure also have (<$>).
 --
@@ -41,5 +39,4 @@ instance Comonad ExactlyOne where
   (a -> b)
   -> k a
   -> k b
-(<$$>) =
-  error "todo: Course.Comonad#(<$>)"
+f <$$> ka = (f . copure) <<= ka 

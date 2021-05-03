@@ -11,7 +11,7 @@
 * `Course.FileIO` ✓
 * `Course.State` ✓
 * `Course.StateT`
-* `Course.Extend`
+* `Course.Extend`✓
 * `Course.Comonad`
 * `Course.Contravariant`
 * `Course.Compose`
