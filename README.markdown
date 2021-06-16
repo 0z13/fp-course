@@ -1,7 +1,6 @@
 
-## System-F functional programming course.
+### Answers to System-F's functional programming course.
 
-## So far, i've completed: 
 
 * `Course.Optional` ✓
 * `Course.List` ✓
